@@ -1,0 +1,25 @@
+name: ___WORKFLOW_NAME___
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    ___JOB_NAME___:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: ___STEP_NAME___
+              run: |
+                  # Get the most recent production release version number
+                  CURRENT_VERSION=$(git for-each-ref 'refs/tags/v*' --sort=-taggerdate --format='%(tag)' --count=1 | cut -c2-)
+
+                  #
+                  NEXT_VERSION=$((CURRENT_VERSION+1))
+
+                  #
+                  git tag --annotate v${NEXT_VERSION} --message "Production v${NEXT_VERSION}"
