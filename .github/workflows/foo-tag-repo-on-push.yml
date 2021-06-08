@@ -1,4 +1,4 @@
-name: ___WORKFLOW_NAME___
+name: WORKFLOW_NAME___
 
 on:
     push:
@@ -6,14 +6,14 @@ on:
             - main
 
 jobs:
-    ___JOB_NAME___:
+    JOB_NAME___:
         runs-on: ubuntu-latest
 
         steps:
             - name: Checkout repository
               uses: actions/checkout@v2
 
-            - name: ___STEP_NAME___
+            - name: STEP_NAME___
               run: |
                   # Get the most recent production release version number
                   CURRENT_VERSION=$(git for-each-ref 'refs/tags/v*' --sort=-taggerdate --format='%(tag)' --count=1 | cut -c2-)
